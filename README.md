@@ -1,8 +1,8 @@
 # VueJS Kanban Board
 
-This is the companion code repository for a forthcoming [Auth0](https://auth0.com) blog article, extending [Vue.js Kanban Board: The Development Process](https://auth0.com/blog/vuejs-kanban-board-the-development-process), adding offline features and data storage capabilities.
+This is the companion code repository for a forthcoming [Auth0](https://auth0.com) blog article, extending the original application to add offline features and data storage capabilities.
 
-Some screenshots of the original application that you will build:
+Some screenshots of the original application that you build by following [the first part of this tutorial](https://auth0.com/blog/vuejs-kanban-board-the-development-process):
 
 ![The Kanban board view](/screenshots/kanban-board.png?raw=true "The board view")
 ![The Kanban backlog view](/screenshots/kanban-backlog.png?raw=true "The backlog view")
