@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 /* eslint-disable no-param-reassign */
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     items: {
       todo: [],
@@ -20,6 +20,19 @@ export default new Vuex.Store({
     },
     updateItems(state, { items, id }) {
       state.items[id] = items;
+    },
+    initializeStore() {
+      const data = localStorage.getItem('boardState');
+
+      if (data) {
+        this.replaceState(Object.assign(this.state, JSON.parse(data)));
+      }
     }
   }
 });
+
+store.subscribe((m, state) => {
+  localStorage.setItem('boardState', JSON.stringify(state));
+});
+
+export default store;
