@@ -5,7 +5,10 @@
     <div class="card" v-for="item in items" :key="item.id">
         <div class="card-block">
           <h5 class="card-title"><span class="text-muted">#{{item.id}}</span>
-          {{item.text}} <span :class="badgeClass(item)">{{badgeText(item)}}</span></h5>
+            {{item.text}}
+            <button type="button" class="close-button pull-right" @click="removeItem(item)"><span>&times;</span></button>
+            <span :class="badgeClass(item)">{{badgeText(item)}}</span>
+          </h5>
         </div>
     </div>
   </div>
@@ -51,6 +54,10 @@ export default {
       return 'done';
     },
 
+    removeItem(item) {
+      this.$store.commit('removeItem', item);
+    },
+
     badgeText(item) {
       const lane = this.itemLane(item);
       return badgeDetail[lane].text;
@@ -58,7 +65,7 @@ export default {
 
     badgeClass(item) {
       const lane = this.itemLane(item);
-      return badgeDetail[lane].class;
+      return `${badgeDetail[lane].class} pull-right`;
     }
   }
 };
@@ -75,5 +82,26 @@ export default {
 
 .card-block {
   padding: 15px;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+h5 {
+  margin-bottom: 0;
+}
+
+.close-button {
+  background: transparent;
+  border: 0;
+  margin: 0 0 0 20px;
+  padding: 0;
+  color: white;
+  opacity: 0.3;
+}
+
+.close-button:hover {
+  cursor: pointer;
 }
 </style>
