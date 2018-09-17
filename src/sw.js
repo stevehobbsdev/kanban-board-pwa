@@ -1,12 +1,11 @@
 const cacheName = 'kanban-cache';
-const exclusionFilter = f => /hot-update|sockjs/.test(f);
+const isExcluded = f => /hot-update|sockjs/.test(f);
+const isBootstrapRequest = request => /bootstrapcdn/.test(request.url);
 
 const filesToCache = [
-  ...serviceWorkerOption.assets.filter(file => !exclusionFilter(file)),
+  ...serviceWorkerOption.assets.filter(file => !isExcluded(file)),
   '/'
 ];
-
-const isBootstrapRequest = request => /bootstrapcdn/.test(request.url);
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -19,7 +18,7 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     new Promise((resolve, reject) => {
-      if (exclusionFilter(event.request.url)) {
+      if (isExcluded(event.request.url)) {
         resolve(fetch(event.request));
       } else {
         resolve(
