@@ -1,5 +1,5 @@
 const cacheName = 'kanban-cache';
-const isExcluded = f => /hot-update|sockjs/.test(f);
+const isExcluded = f => /hot-update|sockjs|manifest/.test(f);
 
 const filesToCache = [
   ...serviceWorkerOption.assets.filter(file => !isExcluded(file)),

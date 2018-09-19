@@ -1,4 +1,4 @@
-FROM node:6 AS build
+FROM node:10 AS build
 
 RUN mkdir -p /app
 
@@ -12,7 +12,7 @@ COPY . /app
 
 RUN NODE_ENV=production npm run build
 
-FROM node:6-slim
+FROM node:10-slim
 
 RUN mkdir -p /app
 

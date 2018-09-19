@@ -1,0 +1,11 @@
+{
+  "name": "Kanban Board",
+  "short_name": "Kanban Board",
+  "start_url": "/",
+  "background_color": "#263e52",
+  "theme_color": "#263e52",
+  "orientation": "portrait-primary",
+  "display": "standalone",
+  "lang": "en-US",
+  "description": "A Kanban Board written in Vue.js, with Progressive Web App features" 
+}
