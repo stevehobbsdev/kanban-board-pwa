@@ -7,5 +7,17 @@
   "orientation": "portrait-primary",
   "display": "standalone",
   "lang": "en-US",
-  "description": "A Kanban Board written in Vue.js, with Progressive Web App features" 
+  "description": "A Kanban Board written in Vue.js, with Progressive Web App features",
+  "icons": [
+    {
+      "src": "/static/app_icon_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/app_icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }
