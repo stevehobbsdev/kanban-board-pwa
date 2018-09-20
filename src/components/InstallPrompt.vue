@@ -26,11 +26,11 @@ export default {
     install() {
       this.showInstallBanner = false;
       installEvent.prompt();
-      installEvent.userChoice.then(result => {
+      installEvent.userChoice.then(() => {
         installEvent = null;
       });
     }
   }
-}
+};
 </script>
 
