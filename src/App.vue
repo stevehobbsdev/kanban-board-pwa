@@ -22,7 +22,7 @@ import InstallPrompt from '@/components/InstallPrompt';
 export default {
   name: 'app',
   components: {
-    MenuBar,
+    'menu-bar': MenuBar,
     InstallPrompt
   }
 };

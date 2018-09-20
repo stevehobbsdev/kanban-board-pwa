@@ -20,7 +20,6 @@ export default {
       e.preventDefault();
       installEvent = e;
       this.showInstallBanner = true;
-      console.log('Handling install event');
     });
   },
   methods: {
