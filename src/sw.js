@@ -1,3 +1,5 @@
+/* global serviceWorkerOption: false */
+
 const cacheName = 'kanban-cache';
 const isExcluded = f => /hot-update|sockjs|manifest/.test(f);
 
@@ -6,9 +8,22 @@ const filesToCache = [
   '/'
 ];
 
-self.addEventListener('install', event => {
-  event.waitUntil(preCache());
-});
+const updateCache = (request, response) =>
+  caches.open(cacheName).then(cache => cache.put(request, response));
+
+const fetchFromNetwork = request =>
+  new Promise((resolve, reject) => {
+    fetch(request).then(response => {
+      if (!isExcluded(request.url) && response) {
+        updateCache(request, response.clone()).then(() => resolve(response));
+      } else {
+        resolve(response);
+      }
+    }, reject);
+  });
+
+const fetchFromCache = request =>
+  caches.match(request).then(response => response || Promise.reject('failed'));
 
 // Caches known files up-front
 const preCache = () =>
@@ -16,32 +31,12 @@ const preCache = () =>
     cache.addAll(filesToCache);
   });
 
+self.addEventListener('install', event => {
+  event.waitUntil(preCache());
+});
+
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetchFromNetwork(event.request).catch(() => fetchFromCache(event.request))
   );
 });
-
-const fetchFromNetwork = request => {
-  return new Promise((resolve, reject) => {
-    fetch(request).then(response => {
-      if (!isExcluded(request.url) && response) {
-        updateCache(request, response.clone()).then(() => resolve(response));
-      } else {
-        resolve(response)
-      }
-    }, reject);
-  });
-};
-
-const fetchFromCache = request => {
-  return caches.match(request).then(response => {
-    return response || Promise.reject('failed');
-  });
-};
-
-const updateCache = (request, response) => {
-  return caches.open(cacheName).then(cache => {
-    return cache.put(request, response);
-  });
-};

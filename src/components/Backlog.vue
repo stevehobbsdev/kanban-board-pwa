@@ -70,38 +70,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.card {
-  margin-bottom: 10px;
-}
-
-.card:last-child {
-  margin-bottom: 25px;
-}
-
-.card-block {
-  padding: 15px;
-}
-
-.card-title {
-  margin-bottom: 0;
-}
-
-h5 {
-  margin-bottom: 0;
-}
-
-.close-button {
-  background: transparent;
-  border: 0;
-  margin: 0 0 0 20px;
-  padding: 0;
-  color: white;
-  opacity: 0.3;
-}
-
-.close-button:hover {
-  cursor: pointer;
-}
-</style>
