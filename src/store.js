@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import localStoragePlugin from './plugins/localStorage';
 
 Vue.use(Vuex);
 
 /* eslint-disable no-param-reassign */
-const store = new Vuex.Store({
+export default new Vuex.Store({
+  plugins: [localStoragePlugin],
   state: {
     items: {
       todo: [],
@@ -43,9 +45,3 @@ const store = new Vuex.Store({
     }
   }
 });
-
-store.subscribe((m, state) => {
-  localStorage.setItem('boardState', JSON.stringify(state));
-});
-
-export default store;
