@@ -5,7 +5,9 @@ const isExcluded = f => /hot-update|sockjs|manifest/.test(f);
 
 const filesToCache = [
   ...serviceWorkerOption.assets.filter(file => !isExcluded(file)),
-  '/'
+  '/',
+  'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/superhero/bootstrap.min.css',
+  'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 ];
 
 const updateCache = (request, response) =>
