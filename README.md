@@ -1,6 +1,6 @@
 # VueJS Kanban Board
 
-This is the companion code repository for a forthcoming [Auth0](https://auth0.com) blog article, extending the original application to add offline features and data storage capabilities.
+This is the companion code repository for the [Kanban Board: Adding Progressive Web App Features](https://auth0.com/blog/vuejs-kanban-board-adding-progressive-web-app-features/) blog article on the [Auth0 blog](https://auth0.com/blog/), extending the original application to add offline features and data storage capabilities.
 
 Some screenshots of the original application that you build by following [the first part of this tutorial](https://auth0.com/blog/vuejs-kanban-board-the-development-process):
 
